@@ -1,6 +1,4 @@
-################################################################################
-# VPC
-################################################################################
+### VPC ###
 
 resource "aws_vpc" "myVPC" {
   cidr_block                       = var.cidr
@@ -11,9 +9,7 @@ resource "aws_vpc" "myVPC" {
   }
 }
 
-###############################################################################
-# Internet Gateway
-###############################################################################
+### Internet Gateway ###
 
 resource "aws_internet_gateway" "myIGW" {
 
@@ -23,9 +19,7 @@ resource "aws_internet_gateway" "myIGW" {
   }
 }
 
-################################################################################
-# Public subnet
-################################################################################
+### Public subnet ###
 
 resource "aws_subnet" "public_subnet_1" {
   vpc_id                          = aws_vpc.myVPC.id
@@ -48,9 +42,7 @@ resource "aws_subnet" "public_subnet_2" {
   }
 }
 
-################################################################################
-# Database subnet
-################################################################################
+### Database subnet ###
 
 resource "aws_subnet" "database_subnet_1" {
   vpc_id                          = aws_vpc.myVPC.id
@@ -73,9 +65,7 @@ resource "aws_subnet" "database_subnet_2" {
   }
 }
 
-################################################################################
-# Publiс routes
-################################################################################
+### Publiс routes ###
 
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.myVPC.id
@@ -89,9 +79,7 @@ resource "aws_route" "public_internet_gateway" {
   gateway_id             = aws_internet_gateway.myIGW.id
 }
 
-################################################################################
-# Database route table
-################################################################################
+### Database route table ###
 
 resource "aws_route_table" "database_route_table" {
   vpc_id = aws_vpc.myVPC.id
@@ -101,9 +89,7 @@ resource "aws_route_table" "database_route_table" {
   }
 }
 
-################################################################################
-# Route table association with subnets
-################################################################################
+### Route table association with subnets ###
 
 resource "aws_route_table_association" "public_route_table_association_1" {
   subnet_id      = aws_subnet.public_subnet_1.id
@@ -122,9 +108,7 @@ resource "aws_route_table_association" "database_route_table_association_2" {
   route_table_id = aws_route_table.database_route_table.id
 }
 
-###############################################################################
-# Security Group
-###############################################################################
+### Security Group ###
 
 resource "aws_security_group" "sg" {
   name        = "tcw_security_group"
