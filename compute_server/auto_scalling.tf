@@ -1,6 +1,4 @@
-################################################################################
-# Autoscaling group
-################################################################################
+### Autoscaling group ###
 
 resource "aws_autoscaling_group" "autoscaling_group" {
   name = "tcw_autoscaling_group"
