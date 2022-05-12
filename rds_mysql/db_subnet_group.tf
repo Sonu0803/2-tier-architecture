@@ -1,6 +1,4 @@
-###############################################################
-## DB Subnet Group creation
-###############################################################
+### DB Subnet Group creation ###
 
 resource "aws_db_subnet_group" "db_sub_group" {
   name       = "main"
