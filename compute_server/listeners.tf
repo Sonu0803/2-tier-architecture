@@ -1,6 +1,4 @@
-#####################################################################
-## AWS Load Balancer Listener
-#####################################################################
+### AWS Load Balancer Listener ###
 
 resource "aws_lb_listener" "alb_forward_listener" {
 load_balancer_arn = aws_lb.tcw_alb.arn
